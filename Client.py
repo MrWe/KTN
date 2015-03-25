@@ -22,7 +22,7 @@ class Client(object):
             print response.get('content')
 
         elif response.get('response') == 'history':
-            print "Welcome, " + response.get('sender') + ", to AwzmChat<3"
+            print "Welcome, " + response.get('sender') + ", to the Chat"
             for message in response.get('content'):
                 print message
 
@@ -33,17 +33,17 @@ class Client(object):
             print response.get('content')
 
     def send(self, data):
-        if data.startswith("*login"):
+        if data.startswith("/login"):
             try:
                 username = data.split()[1]
             except IndexError:
                 username = ""
             data = {'request': 'login', 'content': username}
-        elif data == "*logout":
+        elif data == "/logout":
             data = {'request': 'logout', 'content': None}
-        elif data == "*names":
+        elif data == "/names":
             data = {'request': 'names', 'content': None}
-        elif data == "*help":
+        elif data == "/help":
             data = {'request': 'help', 'content': None}
         else:
             data = {'request': 'msg', 'content': data}
@@ -62,7 +62,7 @@ if __name__ == "__main__":
         message = raw_input('-- ')
         client.send(message)
         
-        if message == '*exit':
+        if message == '/exit':
             break
 
     client.disconnect()

@@ -46,7 +46,7 @@ class ClientHandler(SocketServer.BaseRequestHandler):
         ts = time.time()
         timestamp = datetime.datetime.fromtimestamp(ts).strftime('%d.%m.%Y %H:%M')
         if not self.connection in self.server.clients:
-            return_data = {'timestamp': timestamp, 'sender': '','response': 'error', 'content': 'Not logged in! Try *login <username> '}
+            return_data = {'timestamp': timestamp, 'sender': '','response': 'error', 'content': 'Not logged in! Try /login <username> '}
             self.connection.sendall(json.dumps(return_data))
         else:
             username = self.server.clients[self.connection]
@@ -63,16 +63,7 @@ class ClientHandler(SocketServer.BaseRequestHandler):
     def welcome(self):
         ts = time.time()
         timestamp = datetime.datetime.fromtimestamp(ts).strftime('%d.%m.%Y %H:%M')
-        welcomeInfo ="\n---------------------------------------------------------------------\n \
-     __                                              __      __\n \
-    /  \                                            /   \  /   \ \n \
-   / /\ \                  ______                  |     \/     |\n \
-  / /__\ \      _      _   \__  /     __  __        \          / \n \
- / _____  \    \ \ _ / /    / /__    /  \/  \         \      /\n \
-/_/      \_\    \_/ \_/    /____/   /_/\__/\_\          \  /\n \
----------------------------------------------------------\/-----------\n\n\
-Welcome to AwzmChat<3 write something awezome - aand be awezome.\n\
-Type -> *help <- to see what you can do in AwzmChat<3"
+        welcomeInfo ="Velkommen - Skriv /help for hjelp eller /login <username> for aa logge inn"
         #print "Welcome to AwzmChat"+u"\u2661"+"  write something awezome - aand be awezome."
         #print "Type "+u"\u2192"+" *help " + u"\u2190"+"  to see what you can do in AwzmChat" + u"\u2661"
         return_data = {'timestamp': timestamp, 'sender': '','response': 'info', 'content': welcomeInfo}
@@ -92,7 +83,7 @@ Type -> *help <- to see what you can do in AwzmChat<3"
     def getHelp(self):
         ts = time.time()
         timestamp = datetime.datetime.fromtimestamp(ts).strftime('%d.%m.%Y %H:%M')
-        info = '\nType *login <username> to log in. \nType *logout to log out. \nType *names to get a list of active clients. \nType *exit to close the AwzmChat<3 \nTo chat; just chat. (You have to login first)'
+        info = '\nType /login <username> to log in. \nType /logout to log out. \nType /names to get a list of active clients. \nType /exit to close the AwzmChat<3 \nTo chat; just chat. (You have to login first)'
         return_data = {'timestamp':timestamp, 'sender':'username', 'response':'info', 'content':info}
         self.connection.sendall(json.dumps(return_data))
 
