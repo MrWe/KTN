@@ -22,7 +22,7 @@ class Client(object):
             print response.get('content')
 
         elif response.get('response') == 'history':
-            print "Welcome, " + response.get('sender') + ", to the Chat"
+            print "Welcome, " + response.get('sender')
             for message in response.get('content'):
                 print message
 
@@ -56,7 +56,7 @@ class Client(object):
 
 if __name__ == "__main__":
     client = Client()
-    client.start('localhost', 9999)
+    client.start('188.166.34.46', 9999)
 
     while True:
         message = raw_input('-- ')
