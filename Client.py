@@ -1,6 +1,6 @@
 import socket
 import json
-from MessageWorker import MessageReceiver
+from MessageReceive import MessageReceiver
 # -*- coding: utf-8 -*-
 
 class Client(object):
@@ -56,7 +56,7 @@ class Client(object):
 
 if __name__ == "__main__":
     client = Client()
-    client.start('188.166.34.46', 9999)
+    client.start('localhost', 9999)
 
     while True:
         message = raw_input('-- ')

@@ -114,9 +114,7 @@ class ClientHandler(SocketServer.BaseRequestHandler):
 
         print 'Client disconnected @' + self.ip + ':' + str(self.port)
     
-    # def finish(self):
-    #     if self.connection in self.server.clients:
-    #         del self.server.clients[self.connection]
+
 
 
 
