@@ -8,7 +8,7 @@ import re
 class ClientHandler(SocketServer.BaseRequestHandler):
 
     def printPretty(self, message, username, timestamp):
-        return timestamp + " " + username + ' | ' + message
+        return "Time: " timestamp + " User: " + username + ' Message:  ' + message
 
     def login(self, json_object):
         username = json_object.get('content')
